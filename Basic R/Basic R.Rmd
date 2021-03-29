@@ -1,0 +1,152 @@
+---
+title: "Basic R Tutorial"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+<style>
+
+.tt {
+  font-family:'Lucida Console', monospace; 
+  text-align:center
+}
+
+</style>
+
+
+## Creating Vectors
+
+We can create vectors using an assignment arrow and the <span class="tt">c()</span> function such as
+
+
+<p class = "tt">
+name <- c(element1, element2, ... , elementn)
+</p>
+
+
+
+### Exercise 
+
+Write the R code required to create a vector called <span class="tt">x</span> that contains the numbers 2, 4, 6, 8, 10:
+
+```{r make-x, exercise=TRUE}
+
+```
+
+```{r make-x-solution}
+x <- c(2, 4, 6, 8, 10)
+```
+
+To create a vector with a sequence of integers from $i$ to $j$, we can use a :
+
+<p class = "tt"> z <- c(i:j) <p>
+
+would create a vector named <span class ="tt">z</span> that contained the numbers $i$, $i+1$, $i+2$, up to $j$.
+
+### Exercise
+
+Write the R code required to create a vector called <span class="tt"> y </span> that contains the integers from 1 to 5.
+
+```{r make-y, exercise=TRUE}
+
+```
+
+```{r make-y-solution}
+y <- c(1:5)
+```
+
+## Math with Vectors
+
+### Arithmetic on a Single Vector
+
+If we would like to perform an arithmetic operation to **every** element of a vector, we can use basic math functions such +, -, *, and / for addition, subtraction, multiplication, and division. For e.g.
+
+```{r, echo = TRUE}
+z<-c(1, 4, 7, 9)
+z*2
+```
+
+Notice this took each element of <span class ="tt"> z </span> and multiplied every one by 2. You will also see that R only outputted the result of <span class="tt">z * 2</span> and **not** from <span class="tt">z</span>. This is because <span class="tt">z</span> was created as an assignment and <span class="tt">z * 2 </span> was not. We would have to have a line that just said <span class="tt">z</span> or used the <span class="tt">print()</span> command on <span class="tt">z</span> such as
+
+```{r, echo = TRUE}
+z<-c(1, 4, 7, 9)
+print(z)
+```
+
+```{r, echo = TRUE}
+z<-c(1, 4, 7, 9)
+z
+```
+
+### Exercise
+
+Create a vector <span class="tt">x</span> that contains the integers from 1 to 6. Use R to calculate the values that are one less than three times the value of <span class="tt">x</span>. Note you will need to combine two arithmetic operations in the correct order.
+
+```{r arithmetic, exercise = TRUE, exercise.lines = 3}
+
+```
+
+```{r arithmetic-solution}
+x <- c(1:6)
+3 * x - 1
+```
+
+### Arithmetic on Multiple Vectors
+
+If we have two (or more) vectors of equal length, we can use arithmetic operations on them to perform math **component-wise**. That means the operations are applied to the first element of each vector, then separetly to the second, and again separetly to the third, etc...
+
+Suppose I had information on how many hours each of my 5 employees work at regular pay and at over time pay (paid at a rate of 1.5 times their normal wage). If they are all paid \$10 an hour, I might calculate their pay as follows:
+
+```{r, echo = TRUE}
+regular <- c(6, 9, 5, 4, 3)
+overtime <- c(1, 2, 0, 0, 3)
+pay <- 10 * regular + 1.5 * 10 * overtime
+print(pay)
+```
+
+We can see the first employee worked 6 regular hours and 1 overtime hour. They were paid \$10 for 6 hours and \$15 for 1 hour for a total of 10\*6+15\*1=\$75. That is the first element of the computed pay vector. The second employee worked 9 regular hours and 2 overtime hours. They were paid \$10 for 9 hours and \$15 for 2 hours for a total of 10\*9+15\*2=\$120.
+
+## Topic 2
+
+### Exercise with Hint
+
+*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
+
+Modify the following code to limit the number of rows printed to 5:
+
+```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
+mtcars
+```
+
+```{r print-limit-hint}
+head(mtcars)
+```
+
+### Quiz
+
+*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+
+Some questions to verify that you understand the purposes of various base and recommended R packages:
+
+```{r quiz}
+quiz(
+  question("Which package contains functions for installing other R packages?",
+    answer("base"),
+    answer("tools"),
+    answer("utils", correct = TRUE),
+    answer("codetools")
+  ),
+  question("Which of the R packages listed below are used to create plots?",
+    answer("lattice", correct = TRUE),
+    answer("tools"),
+    answer("stats"),
+    answer("grid", correct = TRUE)
+  )
+)
+```
+
