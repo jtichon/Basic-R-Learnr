@@ -16,6 +16,15 @@ knitr::opts_chunk$set(echo = FALSE)
   text-align:center
 }
 
+h2 {
+  color: darkgreen;
+  font-weight: bold
+}
+
+h3 {
+  color: darkolivegreen;
+}
+
 </style>
 
 
@@ -28,7 +37,12 @@ We can create vectors using an assignment arrow and the <span class="tt">c()</sp
 name <- c(element1, element2, ... , elementn)
 </p>
 
+Note that names in R :
 
+* Are case sensitive
+* May contain numbers, letters, and .'s but must start with a letter
+* Should be descriptive wherever possible
+* Are often written in camel case such as getMean or firstName when they need two words
 
 ### Exercise 
 
@@ -67,19 +81,19 @@ y <- c(1:5)
 If we would like to perform an arithmetic operation to **every** element of a vector, we can use basic math functions such +, -, *, and / for addition, subtraction, multiplication, and division. For e.g.
 
 ```{r, echo = TRUE}
-z<-c(1, 4, 7, 9)
+z <- c(1, 4, 7, 9)
 z*2
 ```
 
 Notice this took each element of <span class ="tt"> z </span> and multiplied every one by 2. You will also see that R only outputted the result of <span class="tt">z * 2</span> and **not** from <span class="tt">z</span>. This is because <span class="tt">z</span> was created as an assignment and <span class="tt">z * 2 </span> was not. We would have to have a line that just said <span class="tt">z</span> or used the <span class="tt">print()</span> command on <span class="tt">z</span> such as
 
 ```{r, echo = TRUE}
-z<-c(1, 4, 7, 9)
+z <- c(1, 4, 7, 9)
 print(z)
 ```
 
 ```{r, echo = TRUE}
-z<-c(1, 4, 7, 9)
+z <- c(1, 4, 7, 9)
 z
 ```
 
@@ -109,44 +123,134 @@ pay <- 10 * regular + 1.5 * 10 * overtime
 print(pay)
 ```
 
-We can see the first employee worked 6 regular hours and 1 overtime hour. They were paid \$10 for 6 hours and \$15 for 1 hour for a total of 10\*6+15\*1=\$75. That is the first element of the computed pay vector. The second employee worked 9 regular hours and 2 overtime hours. They were paid \$10 for 9 hours and \$15 for 2 hours for a total of 10\*9+15\*2=\$120.
+We can see the first employee worked 6 regular hours and 1 overtime hour. They were paid \$10 for 6 hours and \$15 for 1 hour for a total of 10\*6+15\*1=\$75. That is the first element of the computed pay vector. The second employee worked 9 regular hours and 2 overtime hours. They were paid \$10 for 9 hours and \$15 for 2 hours for a total of 10\*9+15\*2=\$120. That is the second element of the computed pay vector.
 
-## Topic 2
+### Exercise
 
-### Exercise with Hint
+In the R chunk below I have created three vectors with information on the number of hot dogs, fries, and drinks five customers bought at a hotdog stand. Hotdogs cost \$4, fries cost \$3.50, and drinks cost \$2. Below the provided code, create a vector called <span class="tt">total</span> that contains the total cost of all the orders and <span class="tt">print()</span> the contents of the vector.
 
-*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
-
-Modify the following code to limit the number of rows printed to 5:
-
-```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
-mtcars
+```{r hotdog, exercise = TRUE, exercise.lines = 5}
+hotdogs <- c(3, 2, 1, 1, 4)
+fries <- c(3, 3, 2, 1, 6)
+drinks <- c(3, 0, 2, 1, 4)
 ```
 
-```{r print-limit-hint}
-head(mtcars)
+```{r hotdog-solution}
+hotdogs <- c(3, 2, 1, 1, 4)
+fries <- c(3, 3, 2, 1, 6)
+drinks <- c(3, 0, 2, 1, 4)
+total <- c(4 * hotdogs + 3.50 * fries + 2 * drinks)
+print(total)
 ```
 
-### Quiz
+## Dataframes
 
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+### Creating Dataframes
 
-Some questions to verify that you understand the purposes of various base and recommended R packages:
+We saw in the last section that we often have multiple pieces of information for each observation in our dataset. For the hot dog example, for each order we tracked the number of hotdogs, the number of fries, and the number of drinks for each individual order. In this case, we may want to store all the information into one object instead of three individual vectors. In R this is called a **dataframe**.
 
-```{r quiz}
-quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
-  ),
-  question("Which of the R packages listed below are used to create plots?",
-    answer("lattice", correct = TRUE),
-    answer("tools"),
-    answer("stats"),
-    answer("grid", correct = TRUE)
-  )
-)
+In a dataframe, each column represents a variable and each row represents an observation in our dataset. The columns have names associated with them so that we can call upon a specific column by name later. We can make a dataframe from a series of vectors by going:
+
+<p class = "tt", style = "text-align: center"> name <- dataframe(vector1, vector2, ... vectorn)</p>
+
+Here is an example of a dataframe containing information on 6 students in a small seminar class. It has information on their name, their major, the number of credit hours they've completed, and their grade on their first essay:
+
+```{r, echo = TRUE}
+name <- c("Johnson, Amy", "Zhang, Xiao", "Brar, Jasdeep", "Dubois, Genevieve", "Germaine, Sophie", "Bector, Bhupinder")
+major <- c("Philosophy", "English", "Political Science", "English", "Philosophy", "Gender Studies")
+credits <- c(39, 63, 93, 45, 66, 54)
+essay1 <- c(75, 92, 87, 77, 90, 85)
+seminar <- data.frame(name, major, credits, essay1)
+print(seminar)
 ```
+
+* Notice that the dataframe was able to hold a mix of both numeric and character variables. If we want R to read data as character data (qualitative), we must put it in quotation marks. 
+
+If you have a csv file that contains data, you can save the file in your working directory (can be found and set in the *Session* drop down menu), and use the <span class = "tt"> read.csv() </span> function. This will save the information in the csv file as a dataframe.
+
+For e.g., if I had the information on the seminar class saved in a file called seminar.csv, I would save the file to my working directory and use the code
+
+```
+seminar <- read.csv("seminar.csv")
+```
+
+to create your dataframe. If you are unfamiliar with making csv files, you can also make a spreadsheet in a program such as Excel or Sheets and ask it to save your as a csv file.
+
+### Exercise
+
+Take the information in the following table and write R code to create a dataframe called <span class = "tt">pets </span> containing the same information with the same variable names. Print the contents of the dataframe to make sure it matches.
+
+```{r}
+name <- c("Fluffy", "Mittens", "George", "Zoinks", "Nermal")
+animal <- c("rabbit", "cat", "dog", "mouse", "cat")
+age <- c(3, 5, 2, 1, 7)
+pets <- data.frame(name, animal, age)
+knitr::kable(pets)
+```
+
+```{r pets, exercise = TRUE, exercise.lines = 5}
+
+```
+
+```{r pets-solution}
+name <- c("Fluffy", "Mittens", "George", "Zoinks", "Nermal")
+animal <- c("rabbit", "cat", "dog", "mouse", "cat")
+age <- c(3, 5, 2, 1, 7)
+pets <- data.frame(name, animal, age)
+print(pets)
+```
+
+### Accessing Information in a Dataframe
+
+When we are working with a dataframe, it is possible that we want to look/compute values on a particular row, a particular column, or a particular entry. When I know the column that I want to use, I can for it using the format:
+
+<p span = "tt"> dataframeName$columnName </p>
+
+```{r columns-setup}
+name <- c("Johnson, Amy", "Zhang, Xiao", "Brar, Jasdeep", "Dubois, Genevieve", "Germaine, Sophie", "Bector, Bhupinder")
+major <- c("Philosophy", "English", "Political Science", "English", "Philosophy", "Gender Studies")
+credits <- c(39, 63, 93, 45, 66, 54)
+essay1 <- c(75, 92, 87, 77, 90, 85)
+seminar <- data.frame(name, major, credits, essay1)
+```
+
+Recall our seminar class information dataframe called seminar.
+
+```{r, exercise.setup = "columns-setup"}
+print(seminar)
+```
+
+Suppose I wanted a list of all the grades on the first essay, I could call for that information in the dataframe by going:
+
+```{r, exercise.setup = "columns-setup", echo = TRUE}
+seminar$essay1
+```
+
+I can also apply a function directly to that column. For e.g., in R, the function <span class ="tt">mean()</span> finds the average of a vector of numbers. I could find the average score on the first essay by going:
+
+```{r, exercise.setup = "columns-setup", echo = TRUE}
+mean(seminar$essay1)
+```
+
+
+<!-- ### Quiz -->
+
+<!-- Some questions using basic arithmetic functions in R: -->
+
+<!-- ```{r quiz} -->
+<!-- quiz( -->
+<!--   question("Which package contains functions for installing other R packages?", -->
+<!--     answer("base"), -->
+<!--     answer("tools"), -->
+<!--     answer("utils", correct = TRUE), -->
+<!--     answer("codetools") -->
+<!--   ), -->
+<!--   question("Which of the R packages listed below are used to create plots?", -->
+<!--     answer("lattice", correct = TRUE), -->
+<!--     answer("tools"), -->
+<!--     answer("stats"), -->
+<!--     answer("grid", correct = TRUE) -->
+<!--   ) -->
+<!-- ) -->
+<!-- ``` -->
 
