@@ -25,6 +25,22 @@ h3 {
   color: darkolivegreen;
 }
 
+.topicsContainer {
+  background-color: #f2f7f6;
+
+}
+
+.topic.current {
+  background-color: #e6fcf8;
+  border-color: #41ab98;
+  border: solid 1px;
+  font-weight: bold
+}
+
+.band {
+  padding-left: 0%
+}
+
 </style>
 
 
@@ -99,7 +115,7 @@ z
 
 ### Exercise
 
-Create a vector <span class="tt">x</span> that contains the integers from 1 to 6. Use R to calculate the values that are one less than three times the value of <span class="tt">x</span>. Note you will need to combine two arithmetic operations in the correct order.
+Create a vector <span class="tt">x</span> that contains the integers from 1 to 6. Use R to calculate the values that are one less than three times the values in <span class="tt">x</span>. Note you will need to combine two arithmetic operations in the correct order.
 
 ```{r arithmetic, exercise = TRUE, exercise.lines = 3}
 
@@ -232,7 +248,62 @@ I can also apply a function directly to that column. For e.g., in R, the functio
 mean(seminar$essay1)
 ```
 
+We can also access particular rows, columns, or cells by attaching two square brackets next to our dataframe's name and giving a locator in the form:
 
+<p class = "tt">name[row, column]<p>
+
+In our <span class = "tt">seminar</span> data frame, the credits are listed in the third column. To get a list of the credit hours we can go
+
+```{r, exercise.setup = "columns-setup", echo = TRUE}
+seminar[,3]
+```
+
+Notice we only gave a number for the column but still included the comma to make sure R knew we were asking for column 3 instead of row 3.
+
+If we wanted information on Genevieve who appears in the fourth row (we exclude the column names form the rows), we can go
+
+```{r, exercise.setup = "columns-setup", echo = TRUE}
+seminar[4,]
+```
+
+If we specifically want to know Jasdeep's major, we note that Jasdeep is in row **3** and the major is listed in column **2** so we can go
+
+```{r, exercise.setup = "columns-setup", echo = TRUE}
+seminar[3,2]
+```
+
+### Quiz
+
+```{r quiz-setup}
+Character <- c("Ziggy", "Roberto", "Jasmine", "Jericho", "Herbert")
+Class <- c("Rogue", "Priest", "Mage", "Barbarian", "Bard")
+Gold <- c(90, 170, 220, 110, 200)
+Level <- c(6, 8, 8, 7, 5)
+rpg <- data.frame(Character, Class, Gold, Level)
+```
+
+Andrea is dungeon mastering a role playing campaign with her friends. She has tracked information on all of the players characters: the **Character** name, their **Class**, the amount of **Gold**, and their player **Level**. All of this data has been entered into a dataframe in R. Here is a printout of her dataframe named **rpg**:
+
+```{r, echo = TRUE, exercise.setup = "quiz-setup"}
+print(rpg)
+```
+
+```{r quiz}
+quiz(
+  question("Which of these lines of code would tell us the class of the character Roberto?",
+           answer("rpg[3,2]"),
+           answer("rpg[2,3]"),
+           answer("rpg[2,2]", correct = TRUE),
+           answer("rpg[3,3]")
+           ),
+    question("Which of these lines of code would give us information on the gold for all of the characters?",
+           answer("rpg[,3]", correct = TRUE),
+           answer("rpg[3,]"),
+           answer("rpg[,4]", correct = TRUE),
+           answer("rpg[4,]")
+           )
+)
+```
 <!-- ### Quiz -->
 
 <!-- Some questions using basic arithmetic functions in R: -->
