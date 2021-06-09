@@ -82,9 +82,20 @@ Note that names in R :
 * Should be descriptive wherever possible
 * Are often written in camel case such as getMean or firstName when they need two words
 
+For example, to make a vector with the first five even positive numbers integers, we would write:
+
+```{r, echo = TRUE}
+z <- c(2, 4, 6, 8, 10)
+z
+```
+
+<div class = "boxed">
+**NOTE:** We wrote <span class = "tt">z <- c(2, 4, 6, 8, 10)</span> to create the vector but then wrote the name of the vector so that it would **display** the contents of <span class = "tt">z</span>
+</div>
+
 ### Exercise 
 
-Write the R code required to create a vector called <span class="tt">x</span> that contains the numbers 2, 4, 6, 8, 10:
+Write the R code required to create a vector called <span class="tt">x</span> that contains the numbers 2, 4, 6, 8, 10 and then display the contents of <span class="tt">x</span>:
 
 ```{r make-x, exercise=TRUE}
 
@@ -92,6 +103,7 @@ Write the R code required to create a vector called <span class="tt">x</span> th
 
 ```{r make-x-solution}
 x <- c(2, 4, 6, 8, 10)
+x
 ```
 
 To create a vector with a sequence of integers from $i$ to $j$, we can use a :
@@ -100,16 +112,24 @@ To create a vector with a sequence of integers from $i$ to $j$, we can use a :
 
 would create a vector named <span class ="tt">z</span> that contained the numbers $i$, $i+1$, $i+2$, up to $j$.
 
+For example, to create a vector containing the numbers 1 to 5 we would go:
+
+```{r, echo = TRUE}
+z <- c(1:5)
+z
+```
+
 ### Exercise
 
-Write the R code required to create a vector called <span class="tt"> y </span> that contains the integers from 1 to 5.
+Write the R code required to create a vector called <span class="tt"> y </span> that contains the integers from 7 to 11 and the display the contents of <span class="tt">y</span>.
 
 ```{r make-y, exercise=TRUE}
 
 ```
 
 ```{r make-y-solution}
-y <- c(1:5)
+y <- c(7:11)
+y
 ```
 
 ## Math with Vectors
@@ -135,9 +155,31 @@ z <- c(1, 4, 7, 9)
 z
 ```
 
+Here are additional examples of arithmetic on vectors:
+
+```{r, echo = TRUE}
+z <- c(1:5)
+z + 4
+```
+
+```{r, echo = TRUE}
+z <- c(1:5)
+z - 3
+```
+
+```{r, echo = TRUE}
+z <- c(3, 6, 9, 12, 15)
+z / 3
+```
+
+```{r, echo = TRUE}
+z <- c(1:5)
+2 * (z - 1)
+```
+
 ### Exercise
 
-Create a vector <span class="tt">x</span> that contains the integers from 1 to 6. Use R to calculate the values that are one less than three times the values in <span class="tt">x</span>. Note you will need to combine two arithmetic operations in the correct order.
+Create a vector <span class="tt">x</span> that contains the integers from 1 to 6. Use R to calculate the values that are two less than three times the values in <span class="tt">x</span>. Note you will need to combine two arithmetic operations in the correct order.
 
 ```{r arithmetic, exercise = TRUE, exercise.lines = 3}
 
@@ -212,7 +254,7 @@ For e.g., if I had the information on the seminar class saved in a file called s
 seminar <- read.csv("seminar.csv")
 ```
 
-to create your dataframe. If you are unfamiliar with making csv files, you can also make a spreadsheet in a program such as Excel or Sheets and ask it to save your as a csv file.
+to create my dataframe. If you are unfamiliar with making csv files, you can also make a spreadsheet in a program such as Excel or Sheets and ask it to save your as a csv file.
 
 ### Exercise
 
@@ -282,7 +324,7 @@ seminar[,3]
 
 Notice we only gave a number for the column but still included the comma to make sure R knew we were asking for column 3 instead of row 3.
 
-If we wanted information on Genevieve who appears in the fourth row (we exclude the column names form the rows), we can go
+If we wanted information on Genevieve who appears in the fourth row (we exclude the column names from the rows), we can go
 
 ```{r, exercise.setup = "columns-setup", echo = TRUE}
 seminar[4,]
@@ -304,7 +346,7 @@ Level <- c(6, 8, 8, 7, 5)
 rpg <- data.frame(Character, Class, Gold, Level)
 ```
 
-Andrea is dungeon mastering a role playing campaign with her friends. She has tracked information on all of the players characters: the **Character** name, their **Class**, the amount of **Gold**, and their player **Level**. All of this data has been entered into a dataframe in R. Here is a printout of her dataframe named **rpg**:
+Andrea is dungeon mastering a role playing campaign with her friends. She has tracked information on all of the players characters: the **Character** name, their **Class**, the amount of **Gold** they have, and their player **Level**. All of this data has been entered into a dataframe in R. Here is a printout of her dataframe named **rpg**:
 
 ```{r, echo = TRUE, exercise.setup = "quiz-setup"}
 print(rpg)

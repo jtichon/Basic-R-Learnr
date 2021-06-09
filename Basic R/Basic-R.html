@@ -184,29 +184,42 @@ name &lt;- c(element1, element2, … , elementn)
 <li>Should be descriptive wherever possible</li>
 <li>Are often written in camel case such as getMean or firstName when they need two words</li>
 </ul>
+<p>For example, to make a vector with the first five even positive numbers integers, we would write:</p>
+<pre class="r"><code>z &lt;- c(2, 4, 6, 8, 10)
+z</code></pre>
+<pre><code>## [1]  2  4  6  8 10</code></pre>
+<div class="boxed">
+<p><strong>NOTE:</strong> We wrote <span class="tt">z &lt;- c(2, 4, 6, 8, 10)</span> to create the vector but then wrote the name of the vector so that it would <strong>display</strong> the contents of <span class="tt">z</span></p>
+</div>
 <div id="section-exercise" class="section level3">
 <h3>Exercise</h3>
-<p>Write the R code required to create a vector called <span class="tt">x</span> that contains the numbers 2, 4, 6, 8, 10:</p>
+<p>Write the R code required to create a vector called <span class="tt">x</span> that contains the numbers 2, 4, 6, 8, 10 and then display the contents of <span class="tt">x</span>:</p>
 <div class="tutorial-exercise" data-label="make-x" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
 <div class="tutorial-exercise-support" data-label="make-x-solution" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>x &lt;- c(2, 4, 6, 8, 10)</code></pre>
+<pre class="text"><code>x &lt;- c(2, 4, 6, 8, 10)
+x</code></pre>
 </div>
 <p>To create a vector with a sequence of integers from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span>, we can use a :</p>
 <p class = "tt">
 z &lt;- c(i:j)
 <p>
 <p>would create a vector named <span class="tt">z</span> that contained the numbers <span class="math inline">\(i\)</span>, <span class="math inline">\(i+1\)</span>, <span class="math inline">\(i+2\)</span>, up to <span class="math inline">\(j\)</span>.</p>
+<p>For example, to create a vector containing the numbers 1 to 5 we would go:</p>
+<pre class="r"><code>z &lt;- c(1:5)
+z</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
 </div>
 <div id="section-exercise-1" class="section level3">
 <h3>Exercise</h3>
-<p>Write the R code required to create a vector called <span class="tt"> y </span> that contains the integers from 1 to 5.</p>
+<p>Write the R code required to create a vector called <span class="tt"> y </span> that contains the integers from 7 to 11 and the display the contents of <span class="tt">y</span>.</p>
 <div class="tutorial-exercise" data-label="make-y" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
 <div class="tutorial-exercise-support" data-label="make-y-solution" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>y &lt;- c(1:5)</code></pre>
+<pre class="text"><code>y &lt;- c(7:11)
+y</code></pre>
 </div>
 </div>
 </div>
@@ -225,10 +238,23 @@ print(z)</code></pre>
 <pre class="r"><code>z &lt;- c(1, 4, 7, 9)
 z</code></pre>
 <pre><code>## [1] 1 4 7 9</code></pre>
+<p>Here are additional examples of arithmetic on vectors:</p>
+<pre class="r"><code>z &lt;- c(1:5)
+z + 4</code></pre>
+<pre><code>## [1] 5 6 7 8 9</code></pre>
+<pre class="r"><code>z &lt;- c(1:5)
+z - 3</code></pre>
+<pre><code>## [1] -2 -1  0  1  2</code></pre>
+<pre class="r"><code>z &lt;- c(3, 6, 9, 12, 15)
+z / 3</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<pre class="r"><code>z &lt;- c(1:5)
+2 * (z - 1)</code></pre>
+<pre><code>## [1] 0 2 4 6 8</code></pre>
 </div>
 <div id="section-exercise-2" class="section level3">
 <h3>Exercise</h3>
-<p>Create a vector <span class="tt">x</span> that contains the integers from 1 to 6. Use R to calculate the values that are one less than three times the values in <span class="tt">x</span>. Note you will need to combine two arithmetic operations in the correct order.</p>
+<p>Create a vector <span class="tt">x</span> that contains the integers from 1 to 6. Use R to calculate the values that are two less than three times the values in <span class="tt">x</span>. Note you will need to combine two arithmetic operations in the correct order.</p>
 <div class="tutorial-exercise" data-label="arithmetic" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="3">
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
@@ -293,7 +319,7 @@ print(seminar)</code></pre>
 <p>If you have a csv file that contains data, you can save the file in your working directory (can be found and set in the <em>Session</em> drop down menu), and use the <span class="tt"> read.csv() </span> function. This will save the information in the csv file as a dataframe.</p>
 <p>For e.g., if I had the information on the seminar class saved in a file called seminar.csv, I would save the file to my working directory and use the code</p>
 <pre><code>seminar &lt;- read.csv(&quot;seminar.csv&quot;)</code></pre>
-<p>to create your dataframe. If you are unfamiliar with making csv files, you can also make a spreadsheet in a program such as Excel or Sheets and ask it to save your as a csv file.</p>
+<p>to create my dataframe. If you are unfamiliar with making csv files, you can also make a spreadsheet in a program such as Excel or Sheets and ask it to save your as a csv file.</p>
 </div>
 <div id="section-exercise-4" class="section level3">
 <h3>Exercise</h3>
@@ -373,7 +399,7 @@ name[row, column]
 <pre class="r"><code>seminar[,3]</code></pre>
 <pre><code>## [1] 39 63 93 45 66 54</code></pre>
 <p>Notice we only gave a number for the column but still included the comma to make sure R knew we were asking for column 3 instead of row 3.</p>
-<p>If we wanted information on Genevieve who appears in the fourth row (we exclude the column names form the rows), we can go</p>
+<p>If we wanted information on Genevieve who appears in the fourth row (we exclude the column names from the rows), we can go</p>
 <pre class="r"><code>seminar[4,]</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -386,7 +412,7 @@ name[row, column]
 </div>
 <div id="section-quiz" class="section level3">
 <h3>Quiz</h3>
-<p>Andrea is dungeon mastering a role playing campaign with her friends. She has tracked information on all of the players characters: the <strong>Character</strong> name, their <strong>Class</strong>, the amount of <strong>Gold</strong>, and their player <strong>Level</strong>. All of this data has been entered into a dataframe in R. Here is a printout of her dataframe named <strong>rpg</strong>:</p>
+<p>Andrea is dungeon mastering a role playing campaign with her friends. She has tracked information on all of the players characters: the <strong>Character</strong> name, their <strong>Class</strong>, the amount of <strong>Gold</strong> they have, and their player <strong>Level</strong>. All of this data has been entered into a dataframe in R. Here is a printout of her dataframe named <strong>rpg</strong>:</p>
 <pre class="r"><code>print(rpg)</code></pre>
 <pre><code>##   Character     Class Gold Level
 ## 1     Ziggy     Rogue   90     6
@@ -481,11 +507,11 @@ output$`tutorial-exercise-pets-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-1", question = structure("Which of these lines of code would tell us the class of the character Roberto?", html = TRUE, class = c("html", "character")), answers = list(structure(list(id = "lnr_ans_6146ad4",     option = "rpg[3,2]", value = "rpg[3,2]", label = structure("rpg[3,2]", html = TRUE, class = c("html",     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer")), structure(list(id = "lnr_ans_20ab2e8",     option = "rpg[2,3]", value = "rpg[2,3]", label = structure("rpg[2,3]", html = TRUE, class = c("html",     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5919b38",     option = "rpg[2,2]", value = "rpg[2,2]", label = structure("rpg[2,2]", html = TRUE, class = c("html",     "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9b9ee18",     option = "rpg[3,3]", value = "rpg[3,3]", label = structure("rpg[3,3]", html = TRUE, class = c("html",     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html", "character")), try_again = structure("Try Again", html = TRUE, class = c("html", "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", "character")), message = NULL, post_message = NULL), ids = list(    answer = "quiz-1-answer", question = "quiz-1"), loading = structure("<strong>Loading:<\u002fstrong> \nWhich of these lines of code would tell us the class of the character Roberto?\n<br/><br/><br/>", html = TRUE, class = c("html", "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 1609933085.25032, options = list()), class = c("learnr_radio", "tutorial_question")))
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-1", question = structure("Which of these lines of code would tell us the class of the character Roberto?", html = TRUE, class = c("html", "character")), answers = list(structure(list(id = "lnr_ans_a344538",     option = "rpg[3,2]", value = "rpg[3,2]", label = structure("rpg[3,2]", html = TRUE, class = c("html",     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c4b7a35",     option = "rpg[2,3]", value = "rpg[2,3]", label = structure("rpg[2,3]", html = TRUE, class = c("html",     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b3eca60",     option = "rpg[2,2]", value = "rpg[2,2]", label = structure("rpg[2,2]", html = TRUE, class = c("html",     "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer")), structure(list(id = "lnr_ans_43b256",     option = "rpg[3,3]", value = "rpg[3,3]", label = structure("rpg[3,3]", html = TRUE, class = c("html",     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html", "character")), try_again = structure("Try Again", html = TRUE, class = c("html", "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", "character")), message = NULL, post_message = NULL), ids = list(    answer = "quiz-1-answer", question = "quiz-1"), loading = structure("<strong>Loading:<\u002fstrong> \nWhich of these lines of code would tell us the class of the character Roberto?\n<br/><br/><br/>", html = TRUE, class = c("html", "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 1687547475.21417, options = list()), class = c("learnr_radio", "tutorial_question")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz-2", question = structure("Which of these lines of code would give us information on the gold for all of the characters?", html = TRUE, class = c("html", "character")), answers = list(structure(list(id = "lnr_ans_e15483e",     option = "rpg[,3]", value = "rpg[,3]", label = structure("rpg[,3]", html = TRUE, class = c("html",     "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer")), structure(list(id = "lnr_ans_776074b",     option = "rpg[3,]", value = "rpg[3,]", label = structure("rpg[3,]", html = TRUE, class = c("html",     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer")), structure(list(id = "lnr_ans_533398e",     option = "rpg[,4]", value = "rpg[,4]", label = structure("rpg[,4]", html = TRUE, class = c("html",     "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8f536a4",     option = "rpg[4,]", value = "rpg[4,]", label = structure("rpg[4,]", html = TRUE, class = c("html",     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html", "character")), try_again = structure("Try Again", html = TRUE, class = c("html", "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", "character")), message = NULL, post_message = NULL), ids = list(    answer = "quiz-2-answer", question = "quiz-2"), loading = structure("<strong>Loading:<\u002fstrong> \nWhich of these lines of code would give us information on the gold for all of the characters?\n<br/><br/><br/>", html = TRUE, class = c("html", "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 1929369090.10157, options = list()), class = c("learnr_checkbox", "tutorial_question")))
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz-2", question = structure("Which of these lines of code would give us information on the gold for all of the characters?", html = TRUE, class = c("html", "character")), answers = list(structure(list(id = "lnr_ans_81dab0",     option = "rpg[,3]", value = "rpg[,3]", label = structure("rpg[,3]", html = TRUE, class = c("html",     "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer")), structure(list(id = "lnr_ans_22b4378",     option = "rpg[3,]", value = "rpg[3,]", label = structure("rpg[3,]", html = TRUE, class = c("html",     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3ca5ada",     option = "rpg[,4]", value = "rpg[,4]", label = structure("rpg[,4]", html = TRUE, class = c("html",     "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ad54f86",     option = "rpg[4,]", value = "rpg[4,]", label = structure("rpg[4,]", html = TRUE, class = c("html",     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html", "character")), try_again = structure("Try Again", html = TRUE, class = c("html", "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", "character")), message = NULL, post_message = NULL), ids = list(    answer = "quiz-2-answer", question = "quiz-2"), loading = structure("<strong>Loading:<\u002fstrong> \nWhich of these lines of code would give us information on the gold for all of the characters?\n<br/><br/><br/>", html = TRUE, class = c("html", "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 1728350054.69517, options = list()), class = c("learnr_checkbox", "tutorial_question")))
 </script>
  <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
