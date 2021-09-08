@@ -254,7 +254,7 @@ For e.g., if I had the information on the seminar class saved in a file called s
 seminar <- read.csv("seminar.csv")
 ```
 
-to create my dataframe. If you are unfamiliar with making csv files, you can also make a spreadsheet in a program such as Excel or Sheets and ask it to save your as a csv file.
+to create my dataframe. If you are unfamiliar with making csv files, you can also make a spreadsheet in a program such as Excel or Sheets and ask it to save your file as a csv file.
 
 ### Exercise
 
